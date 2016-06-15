@@ -26,7 +26,7 @@ Quiz.Routers.Router = Backbone.Router.extend({
 
   showQuestion: function(id) {
     var model = this.collection.getOrFetch({id: id});
-    var view = new Quiz.Views.QuestionShow({model: model});
+    var view = new Quiz.Views.QuestionShow({model: model, collection: this.collection});
     this._swapView(view);
   },
 
