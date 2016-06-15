@@ -9,6 +9,7 @@ Quiz.Routers.Router = Backbone.Router.extend({
   routes: {
     "":"landing",
     "questions":"questionsIndex",
+    "questions/:id":"showQuestion",
   },
 
   landing: function() {
@@ -18,6 +19,12 @@ Quiz.Routers.Router = Backbone.Router.extend({
 
   questionsIndex: function() {
     var view = new Quiz.Views.QuestionsIndex({collection: this.collection});
+    this._swapView(view);
+  },
+
+  showQuestion: function(id) {
+    var model = this.collection.getOrFetch({id: id});
+    var view = new Quiz.Views.QuestionShow({model: model});
     this._swapView(view);
   },
 

@@ -4,7 +4,7 @@
   <div class="question">
     <p><%= question.escape('qtext') %></p>
     <p><%= question.escape('answer') %></p>
-    <p><%= question.escape('distractors') %></p>
+    <a href="#questions/<%= question.id %>">View</a>
   </div>
   <% }); %>
 </div>
