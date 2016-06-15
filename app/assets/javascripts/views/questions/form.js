@@ -15,5 +15,19 @@ Quiz.Views.QuestionForm = Backbone.View.extend({
     var content = this.template({question: this.model});
     this.$el.html(content);
     return this;
+  },
+
+  submit: function(e) {
+    e.preventDefault();
+    var attrs = this.$el.serializeJSON();
+    var that = this;
+
+    this.model.set(attrs);
+    this.model.save({}, {
+      success: function() {
+        that.collection.add(that.model, {merge: true});
+        Backbone.history.navigate("#questions/" + that.model.id, {trigger: true});
+      }
+    });
   }
 });

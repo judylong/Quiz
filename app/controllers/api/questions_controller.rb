@@ -11,11 +11,20 @@ module Api
     end
 
     def create
-      @question = Question.new(project_params)
+      @question = Question.new(question_params)
       if @question.save
         render :show
       else
         render json: @question.errors.full_messages, status: :unprocessable_entity
+      end
+    end
+
+    def update
+      @question = Question.find(params[:id])
+      if @question.update_attributes(question_params)
+        render :json => @question
+      else
+        render :json => @question.errors.full_messages, status: :unprocessable_entity
       end
     end
 
