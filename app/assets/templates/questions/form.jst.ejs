@@ -1,0 +1,5 @@
+<h1><%= question.isNew() ? "New Question" : "Edit Question" %></h1>
+Question: <input type="text" value="<%= question.escape('qtext') %>">
+Distractors: <input type="text" value="<%= question.escape('distractors') %>">
+Answer: <input type="text" value="<%= question.escape('answer') %>">
+<button>Submit</button>
