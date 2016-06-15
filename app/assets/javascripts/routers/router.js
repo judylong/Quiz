@@ -9,7 +9,9 @@ Quiz.Routers.Router = Backbone.Router.extend({
   routes: {
     "":"landing",
     "questions":"questionsIndex",
+    "questions/new":"newQuestion",
     "questions/:id":"showQuestion",
+    "questions/:id/edit":"editQuestion"
   },
 
   landing: function() {
@@ -25,6 +27,18 @@ Quiz.Routers.Router = Backbone.Router.extend({
   showQuestion: function(id) {
     var model = this.collection.getOrFetch({id: id});
     var view = new Quiz.Views.QuestionShow({model: model});
+    this._swapView(view);
+  },
+
+  editQuestion: function(id) {
+    var model = this.collection.getOrFetch({id: id});
+    var view = new Quiz.Views.QuestionForm({model: model, collection: this.collection});
+    this._swapView(view);
+  },
+
+  newQuestion: function() {
+    var model = new Quiz.Models.Question();
+    var view = new Quiz.Views.QuestionForm({model: model, collection: this.collection});
     this._swapView(view);
   },
 
