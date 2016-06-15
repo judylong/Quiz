@@ -4,7 +4,8 @@ window.Quiz = {
   Views: {},
   Routers: {},
   initialize: function() {
-    alert('Hello from Backbone!');
+    this.router = new Quiz.Routers.Router({$rootEl: $("#main")});
+    Backbone.history.start();
   }
 };
 
