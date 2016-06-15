@@ -1,7 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+File.readlines(File.join(Rails.root, 'db', 'code_challenge_question_dump.csv')).drop(1).each do |line|
+  cols = line.chomp.split("|")
+  Question.create(qtext: cols[0], answer: cols[1], distractors: cols[2])
+end
