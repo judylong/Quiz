@@ -1,7 +1,14 @@
 module Api
   class QuestionsController < ApiController
     def index
-      @questions = Question.all
+      if params[:query]
+        @questions = Question.where(nil)
+        params[:query].each do |key, value|
+          @questions = @questions.public_send(key, value) if value.present?
+        end
+      else
+        @questions = Question.all
+      end
       render :index
     end
 
@@ -36,7 +43,7 @@ module Api
 
     private
     def question_params
-      params.require(:question).permit(:qtext, :answer, :distractors)
+      params.require(:question).permit(:qtext, :answer, :distractors, :query)
     end
   end
 end

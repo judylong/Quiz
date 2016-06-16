@@ -1,4 +1,35 @@
-<h1>All Questions</h1>
+<h1>Questions</h1>
+<form class="filter-sort-options">
+  Filter By Operation:
+          <input type="checkbox" name="operation[]" value="+" <%= query['operation'].includes("+") ? "checked" : null %>> +
+          <input type="checkbox" name="operation[]" value="-" <%= query['operation'].includes("-") ? "checked" : null %>> -
+          <input type="checkbox" name="operation[]" value="*" <%= query['operation'].includes("*") ? "checked" : null %>> *
+          <input type="checkbox" name="operation[]" value="/" <%= query['operation'].includes("/") ? "checked" : null %>> /
+  <br>
+  <% debugger %>
+  Filter By Number of Digits in Answer: <input type="number" name="num_ans_dig" value="<%=query['num_ans_dig']%>">
+  <br>
+  Filter By Number of Digits on the Left: <input type="number" name="num_left_dig" value="<%=query['num_left_dig']%>">
+  <br>
+  Filter By Number of Digits on the Right: <input type="number" name="num_right_dig" value="<%=query['num_right_dig']%>">
+  <br>
+  <!-- Filter By Number of Distractors: <input type="number" name="distractors-count"> -->
+  <br>
+  Don't Allow Negatives: <input type="checkbox" name="negatives" value="yes" <%= query['negatives'] ? "checked" : null %>>
+  Group By Operation Type: <input type="checkbox" name="group_by_operations" value="yes" <%= query['group_by_operations'] ? "checked" : null %>>
+  <br>
+  <br>
+  Sort By:
+  <br>
+  Creation: <input type="radio" name="ordering" value="created_at ASC" <%= query['ordering'] == "created_at ASC" ? 'checked' : null %>>Oldest First
+            <input type="radio" name="ordering" value="created_at DESC" <%= query['ordering'] == "created_at DESC" ? 'checked' : null %>>Newest First
+  <br>
+  Update: <input type="radio" name="ordering" value="updated_at ASC" <%= query['ordering'] == "updated_at ASC" ? 'checked' : null %>>Oldest First
+          <input type="radio" name="ordering" value="updated_at DESC" <%= query['ordering'] == "updated_at DESC" ? 'checked' : null %>>Most Recently Updated First
+  <br>
+  <button class="filter-sort-submit">Sort!</button>
+</form>
+
 <div id="questions-div">
   <% questions.each(function(question) { %>
   <div class="question">
