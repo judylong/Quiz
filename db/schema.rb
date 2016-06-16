@@ -11,14 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609163953) do
+ActiveRecord::Schema.define(version: 20160616164633) do
 
   create_table "questions", force: :cascade do |t|
-    t.text     "qtext",       null: false
-    t.string   "answer",      null: false
-    t.text     "distractors", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.text     "qtext",        null: false
+    t.string   "answer",       null: false
+    t.text     "distractors",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.boolean  "negatives"
+    t.string   "operation"
+    t.integer  "left_digits"
+    t.integer  "right_digits"
+    t.integer  "ans_digits"
   end
 
 end
