@@ -1,0 +1,14 @@
+.filter-sort-options {
+  border-top: 1px solid #F3B21C;
+  border-bottom: 1px solid #F3B21C;
+  width: 50%;
+  margin: auto;
+  padding: 10px;
+  background-color: rgb(34, 34, 34);
+}
+
+.filter-sort-options input {
+  background-color: rgb(24,24,24);
+  width: 50px;
+  border-bottom: 1px solid rgb(211, 211, 211);
+}
