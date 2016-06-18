@@ -8,11 +8,12 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
     "click .filter-sort-submit": "filterSort"
   },
 
+  className: "index",
+
   template: JST['questions/index'],
 
   render: function() {
-    var content = this.template({questions: this.collection, query: this.query});
-    this.$el.html(content);
+    this.$el.html(this.template({query: this.query}));
     return this;
   },
 
@@ -26,6 +27,10 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
       },
       reset: true,
       success: function(collection, resp){
+        if (!this.query['operation']) {
+          this.query['operation']=[];
+        }
+        this.emptyResultsCollection = true;
         this.errors = resp.errors;
       }.bind(this)
     });
