@@ -1,5 +1,19 @@
-<h1><%= question.isNew() ? "New Question" : "Edit Question" %></h1>
-Question: <input type="text" name="qtext" value="<%= question.escape('qtext') %>">
-Distractors: <input type="text" name="distractors" value="<%= question.escape('distractors') %>">
-Answer: <input type="text" name="answer" value="<%= question.escape('answer') %>">
-<button>Submit</button>
+<% if (question.isNew()) { %>
+  <h1 class="heading-new">New Question</h1>
+<% } else { %>
+  <h1 class="heading-edit">Edit Question</h1>
+<%  } %>
+
+<div>
+  Question: <input type="text" name="qtext" value="<%= question.escape('qtext') %>">
+</div>
+
+<div>
+  Distractors: <input type="text" name="distractors" value="<%= question.escape('distractors') %>">
+</div>
+
+<div>
+  Answer: <input type="text" name="answer" value="<%= question.escape('answer') %>">
+</div>
+
+<div class="submission">Submit</div>

@@ -7,8 +7,10 @@ Quiz.Views.QuestionForm = Backbone.View.extend({
 
   tagName: 'form',
 
+  className: 'question-form',
+
   events: {
-    "click button": 'submit'
+    "click .submission": 'submit'
   },
 
   render: function() {
