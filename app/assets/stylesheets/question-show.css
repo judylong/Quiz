@@ -1,0 +1,32 @@
+.question-show {
+  margin: auto;
+  background-color: rgb(34, 34, 34);
+  color: rgb(211, 211, 211);
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+
+  font-size: 18px;
+}
+
+.question-show div {
+  padding: 20px;
+  border-bottom: 1px solid rgb(24,24,24);
+}
+
+.question-show a {
+  color: #F96816;
+  display: inline-block;
+  padding: 0 40px;
+}
+
+.delete {
+  color: #ED0289;
+  display: inline-block;
+  padding: 0 40px;
+  border-left: 1px solid rgb(24,24,24);
+}
+
+.delete:hover {
+  cursor: pointer;
+}

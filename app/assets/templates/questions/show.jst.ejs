@@ -1,5 +1,7 @@
-<p><%= question.escape('qtext') %></p>
-<p><%= question.escape('answer') %></p>
-<p><%= question.escape('distractors') %></p>
-<a href="#questions/<%=question.id%>/edit">Edit</a>
-<button class="delete" data-id="<%=question.id%>">Delete</button>
+<div>Question: <%= question.escape('qtext') %></div>
+<div>Answer: <%= question.escape('answer') %></div>
+<div>Distractors: <%= question.escape('distractors') %></div>
+<div>
+  <a class="edit" href="#questions/<%=question.id%>/edit">Edit</a>
+  <p class="delete" data-id="<%=question.id%>">Delete</p>
+</div>

@@ -3,6 +3,8 @@ Quiz.Views.QuestionShow = Backbone.View.extend({
     this.listenTo(this.model, 'change', this.render);
   },
 
+  className: "question-show",
+
   events: {
     "click .delete": "destroyQuestion"
   },
