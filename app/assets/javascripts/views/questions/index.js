@@ -14,6 +14,7 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
 
   render: function() {
     this.$el.html(this.template({query: this.query}));
+    setTimeout(function() {this.renderSubview()}.bind(this), 1);
     return this;
   },
 
@@ -23,10 +24,12 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
       locator: 'models',
       totalNumber: this.collection.length,
       pageSize: 100,
+      pageNumber: this.collection.pageNumber(),
       callback: function(data, pagination) {
-          var html = JST['questions/index']({questions: data});
-          $('#questions-div').html(html);
-      }
+        this.collection.pageNumber(pagination.pageNumber);
+        var html = JST['questions/index']({questions: data});
+        $('#questions-div').html(html);
+      }.bind(this)
     });
   },
 
@@ -43,6 +46,7 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
         if (!this.query['operation']) {
           this.query['operation']=[];
         }
+        this.collection.pageNumber(1);
         this.errors = resp.errors;
       }.bind(this)
     });

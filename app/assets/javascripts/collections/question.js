@@ -1,4 +1,7 @@
 Quiz.Collections.Questions = Backbone.Collection.extend({
+  initialize: function() {
+    this._pageNumber = 1;
+  },
   model: Quiz.Models.Question,
   url: "/api/questions",
   getOrFetch: function(id) {
@@ -15,5 +18,11 @@ Quiz.Collections.Questions = Backbone.Collection.extend({
       });
     }
     return model;
+  },
+  pageNumber: function(newPageNum) {
+    if (newPageNum) {
+      this._pageNumber = newPageNum;
+    }
+    return this._pageNumber;
   }
 });
