@@ -30,6 +30,12 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
         $('#questions-div').html(html);
       }.bind(this)
     });
+
+    setTimeout(function() {
+      if (this.collection.length === 0) {
+        $('#results').html("No Results");
+      }
+    }.bind(this), 3000);
   },
 
   filterSort: function(e) {
