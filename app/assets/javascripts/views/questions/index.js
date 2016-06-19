@@ -13,7 +13,11 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
 
   render: function() {
     this.$el.html(this.template({query: this.collection.query()}));
-    setTimeout(function() {this.renderSubview()}.bind(this), 1);
+    setTimeout(function() {
+      $('#questions-div').html("Loading...");
+      $('#questions-paginaton').hide();
+      this.renderSubview();
+    }.bind(this), 1);
     return this;
   },
 
@@ -25,23 +29,18 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
       pageSize: 100,
       pageNumber: this.collection.pageNumber(),
       callback: function(data, pagination) {
+        $('#questions-paginaton').show();
         this.collection.pageNumber(pagination.pageNumber);
         var html = JST['questions/index']({questions: data});
         $('#questions-div').html(html);
       }.bind(this)
     });
-
-    setTimeout(function() {
-      if (this.collection.length === 0) {
-        $('#results').html("No Results");
-      }
-    }.bind(this), 3000);
   },
 
   filterSort: function(e) {
     e.preventDefault();
     this.collection.query($(".filter-sort-options").serializeJSON());
-
+    $('#questions-div').html("Loading...");
     this.collection.fetch({
       data: {
         query: this.collection.query()
@@ -50,6 +49,10 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
       success: function(collection, resp){
         this.collection.pageNumber(1);
         this.errors = resp.errors;
+        if (this.collection.length === 0) {
+          $('#questions-div').html("No Results");
+          $('#questions-paginaton').hide();
+        }
       }.bind(this)
     });
   }
