@@ -1,13 +1,17 @@
 <div class="qa-heading">
-  <div class="qa-q-heading">Question</div>
-  <div class="qa-a-heading">Answer</div>
-  <div class="single-view">View</div>
+  <div class="single-qtext">Question</div>
+  <div class="single-answer">Answer</div>
+  <div class="single-updated">Last Updated</div>
+  <div class="single-created">Created Date</div>
+  <div class="single-view"></div>
 </div>
 
 <% _.each(questions, function(question) { %>
 <div class="single-question">
   <div class="single-qtext"><%= question.escape('qtext') %></div>
   <div class="single-answer"><%= question.escape('answer') %></div>
+  <div class="single-updated"><%= moment(question.escape('updated_at')).fromNow() %></div>
+  <div class="single-created"><%= moment(question.escape('created_at')).format("MMMM Do YYYY") %></div>
   <div class="single-view"><a href="#questions/<%= question.id %>">View</a></div>
 </div>
 <% }); %>

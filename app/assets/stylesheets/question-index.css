@@ -23,7 +23,19 @@
 }
 
 .single-view {
-  width: 10%;
+  width: 5%;
+}
+
+.single-updated {
+  width: 15%;
+}
+
+.single-created {
+  width: 20%;
+}
+
+.single-view:hover {
+  color: #F3B21C;
 }
 
 .single-question {
@@ -46,23 +58,13 @@
   color: #F3B21C;
 }
 
-.qa-q-heading {
-  width: 30%;
-}
-
-.qa-a-heading {
-  width: 20%;
-}
-
 .single-question {
   border-bottom: 1px solid #AE812C;
 }
 
 .filter-sort-submit {
   color: #F3B21C;
-  /*padding: 20px;*/
   text-align: center;
-  /*width: 100px;*/
   padding-top: 10px;
   margin: 10px auto 0 auto;
   border-top: 1px solid #AE812C;
@@ -70,4 +72,8 @@
 
 .filter-sort-submit:hover {
   cursor: pointer;
+}
+
+#results {
+  margin-top: 20px;
 }
