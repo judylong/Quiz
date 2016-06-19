@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery.serializejson
+//= require_tree ../../../vendor/assets/javascripts/.
 //= require jquery_ujs
 //= require underscore
 //= require backbone
