@@ -1,6 +1,5 @@
 Quiz.Views.QuestionsIndex = Backbone.View.extend({
   initialize: function() {
-    this.query = {"operation":[]};
     this.listenTo(this.collection, 'sync', this.renderSubview);
   },
 
@@ -13,7 +12,7 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
   template: JST['questions/filtersort'],
 
   render: function() {
-    this.$el.html(this.template({query: this.query}));
+    this.$el.html(this.template({query: this.collection.query()}));
     setTimeout(function() {this.renderSubview()}.bind(this), 1);
     return this;
   },
@@ -35,17 +34,14 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
 
   filterSort: function(e) {
     e.preventDefault();
-    this.query = $(".filter-sort-options").serializeJSON();
+    this.collection.query($(".filter-sort-options").serializeJSON());
 
     this.collection.fetch({
       data: {
-        query: this.query
+        query: this.collection.query()
       },
       reset: true,
       success: function(collection, resp){
-        if (!this.query['operation']) {
-          this.query['operation']=[];
-        }
         this.collection.pageNumber(1);
         this.errors = resp.errors;
       }.bind(this)
