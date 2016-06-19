@@ -7,7 +7,7 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
     "click .filter-sort-submit": "filterSort"
   },
 
-  className: "index",
+  className: "questions-index",
 
   template: JST['questions/filtersort'],
 

@@ -1,10 +1,10 @@
-.index h1 {
+.questions-index h1 {
   color: #F3B21C;
   padding: 20px;
   text-align: center;
 }
 
-.index {
+.questions-index {
   width: 60%;
   position: relative;
   margin: auto;
