@@ -30,3 +30,16 @@
 .delete:hover {
   cursor: pointer;
 }
+
+.cu-div > p {
+  display: inline-block;
+  color: #179DBF;
+}
+
+.created-at {
+  float: left;
+}
+
+.updated-at {
+  float: right;
+}
