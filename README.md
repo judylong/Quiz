@@ -1,4 +1,5 @@
 # Quiz
+Built with Rails and Backbone.js
 
 ### Find a live version [here][heroku]
 [heroku]: https://pluralquiz.herokuapp.com/
