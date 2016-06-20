@@ -42,6 +42,8 @@ Quiz.Views.QuestionForm = Backbone.View.extend({
             errs[idx] = "Right of operation can't be blank";
           } else if (err === "Qtext left can't be blank") {
             errs[idx] = "Left of operation can't be blank";
+          } else if (err === "Qtext has already been taken") {
+            errs[idx] = "This questions already exists";
           }
         });
         alert(errs.join('\n'));
