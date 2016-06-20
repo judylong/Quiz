@@ -5,7 +5,14 @@
 <%  } %>
 
 <div>
-  Question: <input type="text" name="qtext" value="<%= question.escape('qtext') %>">
+  Question: What is <input class="qtext-left" type="text" name="qtext_left" value="<%= question.escape('qtext_left') %>">
+                    <select class="qtext-operation" name="qtext_operation">
+                      <option value="+">+</option>
+                      <option value="-">-</option>
+                      <option value="*">*</option>
+                      <option value="/">/</option>
+                    </select>
+                    <input class="qtext-right" type="text" name="qtext_right" value="<%= question.escape('qtext_right') %>"> ?
 </div>
 
 <div>
@@ -13,7 +20,7 @@
 </div>
 
 <div>
-  Answer: <input type="text" name="answer" value="<%= question.escape('answer') %>">
+  Answer: <p class="answer" name="answer"><%= question.escape('answer') %></p>
 </div>
 
 <div class="submission">Submit</div>

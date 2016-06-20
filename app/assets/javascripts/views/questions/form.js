@@ -10,7 +10,9 @@ Quiz.Views.QuestionForm = Backbone.View.extend({
   className: 'question-form',
 
   events: {
-    "click .submission": 'submit'
+    "click .submission": 'submit',
+    "change input": "updateAnswer",
+    "change select": "updateAnswer"
   },
 
   render: function() {
@@ -21,7 +23,10 @@ Quiz.Views.QuestionForm = Backbone.View.extend({
 
   submit: function(e) {
     e.preventDefault();
+    this.updateAnswer();
     var attrs = this.$el.serializeJSON();
+    attrs.qtext = "What is " + attrs.qtext_left + " " + attrs.qtext_operation + " " + attrs.qtext_right + "?";
+    attrs.answer = $('.answer').text();
     var that = this;
 
     this.model.set(attrs);
@@ -29,7 +34,21 @@ Quiz.Views.QuestionForm = Backbone.View.extend({
       success: function() {
         that.collection.add(that.model, {merge: true});
         Backbone.history.navigate("#questions/" + that.model.id, {trigger: true});
+      },
+      error: function(model, resp){
+        alert("Something went terribly, terribly wrong");
       }
     });
+  },
+
+  updateAnswer:function() {
+    var left = $('.qtext-left').val();
+    var right = $('.qtext-right').val();
+    var operation = $('.qtext-operation').val();
+    if (left && right) {
+      $('.answer').text(math.eval(left + operation + right));
+    } else {
+      $('.answer').text("TBD");
+    }
   }
 });
