@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
-  # validates :qtext, :answer, :distractors, presence: true
+  validates :qtext, :answer, :distractors, presence: true
+  validates :qtext, uniqueness: true
 
   scope :negatives, -> (dummy) {where("negatives = ?", false)}
   scope :operation, -> (operations) {where(operation: operations)}
