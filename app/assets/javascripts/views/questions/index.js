@@ -41,6 +41,7 @@ Quiz.Views.QuestionsIndex = Backbone.View.extend({
     e.preventDefault();
     this.collection.query($(".filter-sort-options").serializeJSON());
     $('#questions-div').html("Loading...");
+    $('#questions-paginaton').hide();
     this.collection.fetch({
       data: {
         query: this.collection.query()
