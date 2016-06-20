@@ -36,7 +36,15 @@ Quiz.Views.QuestionForm = Backbone.View.extend({
         Backbone.history.navigate("#questions/" + that.model.id, {trigger: true});
       },
       error: function(model, resp){
-        alert("Something went terribly, terribly wrong");
+        var errs = resp.responseJSON;
+        errs.forEach(function(err, idx) {
+          if (err === "Qtext right can't be blank") {
+            errs[idx] = "Right of operation can't be blank";
+          } else if (err === "Qtext left can't be blank") {
+            errs[idx] = "Left of operation can't be blank";
+          }
+        });
+        alert(errs.join('\n'));
       }
     });
   },
