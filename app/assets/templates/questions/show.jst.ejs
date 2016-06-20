@@ -1,6 +1,6 @@
 <div class="cu-div group">
   <p class="created-at">Created At: <%= moment(question.escape('updated_at')).format('MMMM Do YYYY') %></p>
-  <p class="updated-at">Last Update: <%= moment(question.escape('created_at')).format("MMMM Do YYYY, h:mm:ss a") %></p>
+  <p class="updated-at">Last Update: <%= moment(question.escape('created_at')).format("MMMM Do YYYY, h:mm a") %></p>
 </div>
 <div>Question: <%= question.escape('qtext') %></div>
 <div>Answer: <%= question.escape('answer') %></div>
