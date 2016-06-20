@@ -19,6 +19,8 @@ File.readlines(File.join(Rails.root, 'db', 'code_challenge_question_dump.csv')).
                   negatives: is_neg(qtextsplit[2]) ||
                              is_neg(qtextsplit[4][0...-1]) ||
                              is_neg(cols[1]),
-                  operation: qtextsplit[3]
+                  operation: qtextsplit[3],
+                  qtext_right: qtextsplit[4][0...-1],
+                  qtext_left: qtextsplit[2],
   )
 end

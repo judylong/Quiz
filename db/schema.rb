@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616164633) do
+ActiveRecord::Schema.define(version: 20160620003009) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "questions", force: :cascade do |t|
     t.text     "qtext",        null: false
@@ -24,6 +27,8 @@ ActiveRecord::Schema.define(version: 20160616164633) do
     t.integer  "left_digits"
     t.integer  "right_digits"
     t.integer  "ans_digits"
+    t.integer  "qtext_left"
+    t.integer  "qtext_right"
   end
 
 end
